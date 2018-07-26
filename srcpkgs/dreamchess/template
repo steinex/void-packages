@@ -1,0 +1,17 @@
+# Template file for 'dreamchess'
+pkgname=dreamchess
+version=0.2.2
+revision=1
+#build_style=gnu-configure
+build_style=cmake
+wrksrc="dreamchess-cb63a0a717efe3ff293c9ee0dc9476cd87233eec"
+hostmakedepends="flex unzip"
+makedepends="SDL2_image-devel SDL2_mixer-devel glew-devel mxml-devel pugixml-devel"
+depends="desktop-file-utils hicolor-icon-theme"
+short_desc="3D OpenGL chess game"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-3.0-or-later"
+homepage="https://www.dreamchess.org/"
+#distfiles="https://github.com/${pkgname}/${pkgname}/releases/download/${version}/${pkgname}-${version}.tar.gz"
+distfiles="https://github.com/dreamchess/dreamchess/archive/cb63a0a717efe3ff293c9ee0dc9476cd87233eec.zip"
+checksum=6c35dbded3a47eeef32bef19106ca7b491f82011065fa618713e061feabaaa6c

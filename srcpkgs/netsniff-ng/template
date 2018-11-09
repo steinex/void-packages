@@ -1,0 +1,18 @@
+# Template file for 'netsniff-ng'
+pkgname=netsniff-ng
+version=0.6.5
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config"
+makedepends=""
+depends=""
+short_desc="A Swiss army knife for your daily Linux network plumbing"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-2.0"
+homepage="http://www.netsniff-ng.org/"
+distfiles="http://pub.netsniff-ng.org/netsniff-ng/${pkgname}-${version}.tar.gz"
+checksum=9d8ef156356b05a303061a5b86e1fe0c27c3fcceaa4f790f3c0cb2367c54589a
+
+do_configure() {
+    ./configure --prefix=/usr
+}

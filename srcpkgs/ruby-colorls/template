@@ -1,0 +1,11 @@
+# Template file for 'ruby-colorls'
+pkgname=ruby-colorls
+version=1.1.1
+revision=1
+noarch=yes
+build_style=gem
+short_desc="Beautifies the ls command with colors and icons"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="MIT"
+homepage="https://github.com/athityakumar/colorls"
+checksum=ac553738fc05778a6683cd66ca533a879e521f8a3673e3fa2c0c9b5c40572194

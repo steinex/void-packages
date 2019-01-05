@@ -1,7 +1,7 @@
 # Template file for 'gimp'
 pkgname=gimp
-version=2.10.4
-revision=6
+version=2.10.8
+revision=1
 lib32disabled=yes
 build_style=gnu-configure
 hostmakedepends="automake gegl gettext-devel glib-devel gtk+-devel intltool
@@ -19,7 +19,7 @@ maintainer="Kartik S <kartik.ynwa@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://www.gimp.org"
 distfiles="https://download.gimp.org/pub/gimp/v${version%.*}/gimp-${version}.tar.bz2"
-checksum=ffb0768de14a2631b3d7ed71f283731441a1b48461766c23f0574dce0706f192
+checksum=d849c1cf35244938ae82e521b92b720ab48b8e9ed092d5de92c2464ef5244b9b
 
 pre_configure() {
 	NOCONFIGURE=1 autoreconf -fi

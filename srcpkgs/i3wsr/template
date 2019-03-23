@@ -1,0 +1,21 @@
+# Template file for 'i3wsr'
+pkgname=i3wsr
+version=20200103
+revision=1
+build_style=cargo
+hostmakedepends="git"
+makedepends="libxcb-devel python3-devel"
+short_desc="Change i3 workspace names based on content"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="MIT"
+homepage="https://github.com/roosta/i3wsr"
+
+do_fetch() {
+	git clone https://github.com/roosta/i3wsr.git ${wrksrc}
+	cd ${wrksrc}
+	git checkout whitespace
+}
+
+post_install() {
+	vlicense LICENSE
+}

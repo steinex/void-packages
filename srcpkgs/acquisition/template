@@ -1,0 +1,16 @@
+# Template file for 'acquisition'
+pkgname=acquisition
+version=0.8b
+revision=1
+build_style=qmake
+#configure_args=""
+#make_install_args=""
+hostmakedepends="qt5-qmake"
+makedepends="qt5-webengine-devel qt5-quickcontrols2-devel qt5-declarative-devel qt5-webchannel-devel qt5-location-devel boost-devel"
+#depends=""
+short_desc="Inventory management tool for Path of Exile"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/xyzz/acquisition"
+distfiles="https://github.com/xyzz/acquisition/archive/${version}.tar.gz"
+checksum=3dd24449514fc1eb694006ec4a7e1743f847876071113ba18248dd98727e01f1

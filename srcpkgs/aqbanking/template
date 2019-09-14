@@ -1,6 +1,6 @@
 # Template file for 'aqbanking'
 pkgname=aqbanking
-version=5.8.2
+version=5.99.28beta
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config gwenhywfar"
@@ -9,8 +9,8 @@ short_desc="Library for online banking and financial applications"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="GPL-2.0-only, GPL-3.0-only"
 homepage="http://www.aquamaniac.de/aqbanking"
-distfiles="https://www.aquamaniac.de/rdm/attachments/download/107/aqbanking-${version}.tar.gz"
-checksum=93ca523fe175e72042db75f8c3fc6255ab058cf82caf52796e15f030809fb15e
+distfiles="https://www.aquamaniac.de/rdm/attachments/download/129/aqbanking-5.99.28beta.tar.gz"
+checksum=8589f87f01f23c1b0be59448255b9e2e066bd41a13e11a007dd0dd81d5725a56
 disable_parallel_build=yes
 
 if [ "$CROSS_BUILD" ]; then

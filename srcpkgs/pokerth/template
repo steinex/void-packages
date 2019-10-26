@@ -1,0 +1,23 @@
+# Template file for 'pokerth'
+pkgname=pokerth
+version=1.1.2
+revision=1
+wrksrc="${pkgname}-${version}-rc"
+build_style=qmake
+configure_args="CONFIG+=client ${pkgname}.pro"
+hostmakedepends="boost-devel qt5-qmake pkg-config protobuf"
+makedepends="SDL_mixer-devel gsasl-devel libcurl-devel libgcrypt-devel
+ protobuf-devel qt5-devel sqlite-devel tinyxml-devel zlib-devel"
+short_desc="Poker game written in C++/Qt"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="AGPL-3.0-only"
+homepage="https://www.pokerth.net"
+distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.gz"
+checksum=02cb3dee8077de20cd4491b66049b123d8bdd7fa243855f97c817934875c297a
+
+CXXFLAGS+="-I${XBPS_CROSS_BASE}/usr/include"
+CXXFLAGS+="-I${XBPS_CROSS_BASE}/usr/include/boost"
+
+post_install() {
+	vlicense COPYING
+}

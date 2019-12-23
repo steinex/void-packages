@@ -1,9 +1,9 @@
 # Template file for 'alacritty'
 pkgname=alacritty
-version=0.4.0
+version=20191225
 revision=1
 build_style=cargo
-hostmakedepends="pkg-config python3"
+hostmakedepends="pkg-config python3 git"
 makedepends="freetype-devel fontconfig-devel libxcb-devel"
 depends="libXxf86vm ncurses alacritty-terminfo-${version}_${revision}"
 short_desc="Cross-platform, GPU-accelerated terminal emulator"
@@ -11,11 +11,13 @@ maintainer="Andrea Brancaleoni <abc@pompel.me>"
 license="Apache-2.0"
 homepage="https://github.com/jwilm/${pkgname}"
 changelog="https://raw.githubusercontent.com/jwilm/${pkgname}/v${version}/CHANGELOG.md"
-distfiles="https://github.com/jwilm/${pkgname}/archive/v${version}.tar.gz"
-checksum=cbc0da74f313a806efed02fa863eece4b422c52e24832b553cd8592832c591e3
+
+do_fetch() {
+	git clone https://github.com/jwilm/alacritty.git ${wrksrc}
+}
 
 do_install() {
-	cargo install --path ${pkgname} --target ${RUST_TARGET} --root="${DESTDIR}/usr"
+	cargo install --path ${pkgname} --target ${RUST_TARGET} --root="${DESTDIR}/usr" --locked
 	rm "${DESTDIR}"/usr/.crates.toml
 }
 

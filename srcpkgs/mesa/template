@@ -1,6 +1,6 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=20.0.7
+version=20200529
 revision=1
 wrksrc="mesa-${version}"
 build_style=meson
@@ -10,7 +10,7 @@ configure_args="-Dglvnd=true -Dshared-glapi=true -Dgbm=true -Degl=true
  -Dllvm=true -Db_lto=false -Dcpp_std=gnu++14"
 hostmakedepends="gettext flex libxml2-python llvm pkg-config
  python3-Mako $(vopt_if wayland 'wayland-protocols wayland-devel')
- glslang"
+ glslang git"
 makedepends="elfutils-devel expat-devel libXdamage-devel libXvMC-devel
  libXxf86vm-devel libatomic-devel libdrm-devel libffi-devel libva-devel
  libvdpau-devel libxshmfence-devel ncurses-devel talloc-devel zlib-devel
@@ -22,8 +22,12 @@ maintainer="Juan RP <xtraeme@gmail.com>"
 license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 changelog="https://www.mesa3d.org/relnotes/${version}.html"
-distfiles="https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
-checksum=fe6e258fe772c3cd2ac01741bf7408058c3ac02d66acff9a6e669bd72e3ea178
+
+do_fetch() {
+	git clone https://gitlab.freedesktop.org/mesa/mesa.git ${wrksrc}
+	cd ${wrksrc}
+	git checkout 9d645a19ebf2cc574e6ad3f84100f0e2ddd4d59b
+}
 
 build_options="wayland"
 build_options_default="wayland"

@@ -1,7 +1,7 @@
 # Template file for 'virtualbox-ose'
 pkgname=virtualbox-ose
-version=6.1.10
-revision=2
+version=6.1.14
+revision=1
 wrksrc="VirtualBox-${version%*a}"
 short_desc="General-purpose full virtualizer for x86 hardware"
 maintainer="Orphaned <orphan@voidlinux.org>"
@@ -9,7 +9,7 @@ license="GPL-2.0-only, CDDL-1.0"
 homepage="https://www.virtualbox.org"
 changelog="https://www.virtualbox.org/wiki/Changelog"
 distfiles="http://download.virtualbox.org/virtualbox/${version%*a}/VirtualBox-$version.tar.bz2"
-checksum=37d8b30c0be82a50c858f3fc70cde967882239b6212bb32e138d3615b423c477
+checksum=91fa05bcfce36316ca93e3927c9550ea66286fff4c5bec900b753fca278ce1a0
 
 nopie=yes
 lib32disabled=yes

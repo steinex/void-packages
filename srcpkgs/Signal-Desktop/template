@@ -1,6 +1,6 @@
 # Template file for 'Signal-Desktop'
 pkgname=Signal-Desktop
-version=1.39.5
+version=1.40.0
 revision=1
 # Due to electron
 # 32-bit is not supported https://github.com/signalapp/Signal-Desktop/issues/1661
@@ -12,7 +12,7 @@ maintainer="Julio Galvan <juliogalvan@protonmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/signalapp/Signal-Desktop"
 distfiles="https://github.com/signalapp/Signal-Desktop/archive/v${version}.tar.gz"
-checksum=f9f55c0195579b43712bf370b753337432eda4bcf89809d1c8f3deb0b4ee4400
+checksum=64112a95c35f56fc46d08162026f14d0547e780f42d5811dc81c58e7662cf9ab
 nostrip_files="signal-desktop"
 
 pre_build() {

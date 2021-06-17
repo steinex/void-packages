@@ -1,0 +1,22 @@
+# Template file for 'dave'
+pkgname=dave
+version=0.4.0
+revision=1
+conf_files="/etc/dave/config.yaml"
+build_style=go
+go_import_path=github.com/micromata/dave
+go_package="${go_import_path}/cmd/dave ${go_import_path}/cmd/davecli"
+short_desc="Simple, standalone WebDAV server written in go"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="Apache-2.0"
+homepage="https://github.com/micromata/dave"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=87747a3354723d8d52852efd454cbe0bf82d32a93f923dca4774e8729c6a6825
+
+system_accounts="_dave"
+make_dirs="/etc/dave 0700 _dave _dave"
+
+post_install() {
+	vinstall examples/config-sample.yaml 644 etc/dave config.yaml
+	vsv dave
+}

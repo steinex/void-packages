@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /etc/dave
+exec chpst -u _dave dave

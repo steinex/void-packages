@@ -1,0 +1,22 @@
+# Template file for 'helvum'
+pkgname=helvum
+version=0.3.1
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=meson
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="glib-devel pkg-config rust"
+makedepends="gtk4-devel pipewire-devel"
+depends=""
+short_desc="GTK patchbay for pipewire"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.freedesktop.org/ryuukyu/helvum"
+distfiles="${homepage}/-/archive/0.3.1/helvum-0.3.1.tar.gz"
+checksum=1e6ea766dc987e568899bdc6ca0e7c5468ea609e5cee0b271e2c9eeed3562567

@@ -1,0 +1,32 @@
+From 128be7c2cb36f5d5528b7c31e35732bedaac4967 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sat, 22 Jan 2022 18:28:30 +0200
+Subject: [PATCH] bluez5: fix initial profile selection
+
+Currently, spa-bluez5 devices start in non-off profile, which causes
+m-device-activation logic to set the highest priority profile instead of
+the saved one.
+
+Fix this by having spa-bluez5 start devices in off profile, similarly as
+spa-alsa does.
+---
+ src/scripts/monitors/bluez.lua | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/scripts/monitors/bluez.lua b/src/scripts/monitors/bluez.lua
+index 4a54a7b2..4fac330c 100644
+--- a/src/scripts/monitors/bluez.lua
++++ b/src/scripts/monitors/bluez.lua
+@@ -104,6 +104,9 @@ function createDevice(parent, id, type, factory, properties)
+     end
+     properties["device.name"] = name
+ 
++    -- initial profile is to be set by m-device-activation, not spa-bluez5
++    properties["bluez5.profile"] = "off"
++
+     -- apply properties from config.rules
+     rulesApplyProperties(properties)
+ 
+-- 
+GitLab
+

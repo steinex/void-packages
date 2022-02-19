@@ -1,6 +1,6 @@
 # Template file for 'shiori'
 pkgname=shiori
-version=1.5.0
+version=1.5.1
 revision=1
 build_style=go
 go_import_path=github.com/go-shiori/shiori
@@ -9,7 +9,7 @@ maintainer="Frank Steinborn <steinex@nognu.de>"
 license="MIT"
 homepage="https://github.com/go-shiori/shiori"
 distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
-checksum=c2ebc0f009feb22f891c7ab0fa7b8c0d71e1cfc34a974c7503a702ec07d8e9ee
+checksum=d7d9c00b8b2866b51f58dcea9b045ae560deb9b48093a2cb56dc17881ea055b2
 
 system_accounts="_shiori"
 _shiori_homedir="/var/lib/shiori"

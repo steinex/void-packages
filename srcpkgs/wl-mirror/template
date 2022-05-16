@@ -1,0 +1,30 @@
+# Template file for 'wl-mirror'
+pkgname=wl-mirror
+version=0.11.2
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=cmake
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="git"
+makedepends="wayland-devel libglvnd-devel"
+depends=""
+short_desc="Simple Wayland output mirror client"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-3.0-only"
+homepage="https://github.com/Ferdi265/wl-mirror"
+#changelog=""
+#distfiles="https://github.com/Ferdi265/wl-mirror/archive/refs/tags/v${version}.tar.gz"
+#checksum=5734cde2425a58d7d19f91815c3f49114bd55d7334e499830719360239071c7a
+#
+do_fetch() {
+	git clone --recurse-submodules https://github.com/Ferdi265/wl-mirror.git wl-mirror-${version}
+	cd wl-mirror-${version}
+	git checkout 454a17c6bb397e641d58b0a68422267b3d9ce9c7
+}
+

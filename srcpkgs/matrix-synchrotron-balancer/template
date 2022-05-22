@@ -1,0 +1,28 @@
+# Template file for 'matrix-synchrotron-balancer'
+pkgname=matrix-synchrotron-balancer
+version=20220520
+revision=1
+build_style=go
+go_import_path=github.com/Sorunome/matrix-synchrotron-balancer
+hostmakedepends="git"
+short_desc="Load balancer for synapse synchrotron workers"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Sorunome/matrix-synchrotron-balancer"
+#distfiles=""
+#checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+
+conf_files="/etc/matrix-synchrotron-balancer/config.yaml"
+
+do_fetch() {
+	git clone https://github.com/Sorunome/matrix-synchrotron-balancer.git ${pkgname}-${version}
+	cd ${pkgname}-${version}
+	git checkout c0d8a10
+}
+
+post_install() {
+	vsv matrix-synchrotron-balancer
+
+	vsconf config.sample.yaml
+	vinstall config.sample.yaml 0644 etc/matrix-synchrotron-balancer config.yaml
+}

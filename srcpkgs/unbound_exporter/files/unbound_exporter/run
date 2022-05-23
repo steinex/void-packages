@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec chpst -u _unbound unbound_exporter -unbound.host unix:/run/unbound.sock 2>&1
+

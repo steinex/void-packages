@@ -1,0 +1,19 @@
+# Template file for 'unbound_exporter'
+pkgname=unbound_exporter
+version=0.4.1
+revision=1
+build_style=go
+go_import_path=github.com/letsencrypt/unbound_exporter
+#hostmakedepends=""
+#makedepends=""
+#depends=""
+short_desc="Prometheus exporter for unbound"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="Apache-2.0"
+homepage="https://github.com/letsencrypt/unbound_exporter"
+distfiles="https://github.com/letsencrypt/unbound_exporter/archive/refs/tags/v${version}.tar.gz"
+checksum=e0013cff1850310c584b890d6ba30d9183b394121b2a3d69df9accb3ffe7f5c0
+
+post_install() {
+	vsv unbound_exporter
+}

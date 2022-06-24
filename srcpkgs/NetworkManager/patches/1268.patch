@@ -1,0 +1,54 @@
+From 5d1834522d71878cc21ef769de7a9a69c2940d38 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Mon, 20 Jun 2022 15:55:27 +0200
+Subject: [PATCH] core: avoid stale entries in the DNS manager for non-virtual
+ devices
+
+_dev_l3_register_l3cds() schedules a commit, but if the device has
+commit type NONE, that doesn't emit a l3cd-changed. Do it manually,
+to ensure that entries are removed from the DNS manager.
+
+Related: b86388bef375 ('core: avoid stale entries in the DNS manager')
+Fixes: 58287cbcc0c8 ('core: rework IP configuration in NetworkManager using layer 3 configuration')
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/995
+---
+ src/core/devices/nm-device.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/devices/nm-device.c b/src/core/devices/nm-device.c
+index 344e706395..cad184f6e8 100644
+--- a/src/core/devices/nm-device.c
++++ b/src/core/devices/nm-device.c
+@@ -7975,7 +7975,8 @@ nm_device_slave_notify_release(NMDevice *self, NMDeviceStateReason reason)
+ void
+ nm_device_removed(NMDevice *self, gboolean unconfigure_ip_config)
+ {
+-    NMDevicePrivate *priv;
++    NMDevicePrivate      *priv;
++    const NML3ConfigData *l3cd_old;
+ 
+     g_return_if_fail(NM_IS_DEVICE(self));
+ 
+@@ -7993,6 +7994,18 @@ nm_device_removed(NMDevice *self, gboolean unconfigure_ip_config)
+     }
+ 
+     _dev_l3_register_l3cds(self, priv->l3cfg, FALSE, unconfigure_ip_config);
++
++    /* _dev_l3_register_l3cds() schedules a commit, but if the device has
++     * commit type NONE, that doesn't emit a l3cd-changed. Do it manually,
++     * to ensure that entries are removed from the DNS manager. */
++    if (priv->l3cfg
++        && NM_IN_SET(priv->sys_iface_state,
++                     NM_DEVICE_SYS_IFACE_STATE_REMOVED,
++                     NM_DEVICE_SYS_IFACE_STATE_EXTERNAL)) {
++        l3cd_old = nm_l3cfg_get_combined_l3cd(priv->l3cfg, TRUE);
++        if (l3cd_old)
++            g_signal_emit(self, signals[L3CD_CHANGED], 0, l3cd_old, NULL);
++    }
+ }
+ 
+ static gboolean
+-- 
+GitLab
+

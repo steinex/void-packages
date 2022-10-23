@@ -1,0 +1,20 @@
+# Template file for 'pm-utils'
+pkgname=pm-utils
+version=1.4.1
+revision=1
+build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+#hostmakedepends=""
+#makedepends=""
+#depends=""
+short_desc="Power Management Utilities"
+maintainer="Frank Steinborn <steinex@nognu.de>"
+license="GPL-2.0"
+homepage="Power Management Utilities"
+#changelog=""
+distfiles="http://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz"
+checksum=8ed899032866d88b2933a1d34cc75e8ae42dcde20e1cc21836baaae3d4370c0b
